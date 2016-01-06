@@ -201,6 +201,5 @@
 {
     \end{tabu}
     \end{table}
-    \end{mdframe}
 }
 
