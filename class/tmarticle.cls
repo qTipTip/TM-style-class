@@ -174,6 +174,7 @@
 }
 
 % we now define the mdtable styles
+\newcommand{\tableCaption}{}
 \mdfdefinestyle{TMstyleTable}{
             skipabove=4mm,
             skipbelow=0mm,
@@ -191,10 +192,11 @@
             linecolor=TMcodeFrame,
 }
 \everyrow{\tabucline[.4mm white]{}}
-\tabulinesep=^4mm_3mm
+\tabulinesep=^3mm_3mm
 \taburowcolors[2] 2{TMtableRowOne .. TMtableRowTwo}
-\newenvironment{TMtable}[2]
+\newenvironment{TMtable}[3]
 {
+    \renewcommand{\tableCaption}{#3}
     \begin{table}[#2]
     \begin{mdframed}[style=TMstyleTable]
     \begin{tabu} to \textwidth{#1}
@@ -204,8 +206,9 @@
 {
     \end{tabu}
     \end{mdframed}
+    \caption{\tableCaption}
     \end{table}
-    }
+}
 
 % theorem styles
 \declaretheoremstyle[
