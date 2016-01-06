@@ -124,10 +124,12 @@
     \end{minipage}
 }
 
-% and then the main environment
+% and finally the main environment
+% takes type (warning/normal/critical) as first argument
+% takes bulletin title as second argument
 \newenvironment{TMbulletin}[2]
 {
-    \begin{TMbulletinBase}[style=#1, frametitle=\@TMbulletinTitleContent{images/#1.png}{Title}]
+    \begin{TMbulletinBase}[style=#1, frametitle=\@TMbulletinTitleContent{images/#1.png}{#2}]
     \vspace*{1mm}
     \begin{TMbulletinContent}
 }
