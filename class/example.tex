@@ -1,7 +1,10 @@
 \documentclass{TMarticle}
 \usepackage[]{lipsum} 
+\definecolor{TMcodeBackground}{RGB}{240, 240, 240}
+\definecolor{TMbulletinBackground}{RGB}{240, 240, 240}
 \author{Ivar Stangeby}
 \title{The TMarticle document class}
+
 \begin{document}
 
 \maketitle
@@ -10,6 +13,7 @@
 \begin{TMcode}{C++}{testcode.cpp}{A test C++ program}
 void main(int argc) {
     // a test function with comment
+    std::cout << "a string!" << std::endl;
     return 0;
 }
 \end{TMcode}
@@ -25,18 +29,35 @@ void main(int argc) {
 \section{Warnings and bulletins}
 
 \begin{TMbulletin}{warning}{Test Warning}
-   Warning! 
+    This is a test, it has nothing to do with anything what-so-ever. I am only
+    typing to you here in a stream of conciousness type of style to fill
+    something in. Since you are still reading this, have you read Virginia
+    Woolf? 
 \end{TMbulletin}
 \begin{TMbulletin}{normal}{Test Normal}
-    Everything is ok!
 \end{TMbulletin}
-
 \begin{TMbulletin}{critical}{Test Critical}
-    Oops!
 \end{TMbulletin}
 
 \section{Proclamations}
+
+\begin{theorem}[Euclid]
+   This is a test proclamation with a lot of mathematics like $x^2 = 7$ and $i^2 = -1$.
+   \[
+       f(x) = x \int_2^7 g(x) \, dx.
+   \]
+\end{theorem}
+\begin{proof}
+   It is easy to show the above since it follows from already proven results.
+\end{proof}
+\begin{lemma}[TestLemma]
+    Please ignore.
+\end{lemma}
+\begin{theorem}[Euclid]
+   This is a test proclamation with a lot of mathematics like $x^2 = 7$ and $i^2 = -1$.
+   \[
+       f(x) = x \int_2^7 g(x) \, dx.
+   \]
+\end{theorem}
 \section{Colors}
-
-
 \end{document}

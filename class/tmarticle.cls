@@ -11,6 +11,8 @@
 \RequirePackage{tabu}
 \RequirePackage{longtable}
 \RequirePackage{fontspec}
+\RequirePackage{amsthm}
+\RequirePackage{thmtools}
 
 % color definitions
 \definecolor{TMgreen}{RGB}{14, 191, 48}
@@ -19,13 +21,14 @@
 \definecolor{TMcodeBackground}{RGB}{224, 224, 224}
 \definecolor{TMcodeFrame}{RGB}{109, 108, 109}
 \definecolor{TMtableHead}{RGB}{211, 47, 0}
-\definecolor{TMtableRowOne}{RGB}{230, 230, 230}
-\definecolor{TMtableRowTwo}{RGB}{240, 240, 240}
+\definecolor{TMtableRowTwo}{RGB}{230, 230, 230}
+\definecolor{TMtableRowOne}{RGB}{240, 240, 240}
 \definecolor{TMemphasis}{RGB}{165, 32, 23}
 \definecolor{TMwarning}{RGB}{250, 175, 52}
 \definecolor{TMcritical}{RGB}{229, 0, 72}
 \definecolor{TMnormal}{RGB}{54, 160, 220}
 \definecolor{TMbulletinBackground}{RGB}{224, 224, 224}
+\definecolor{TMtheorem}{RGB}{14, 191, 48}
 
 % font settings
 \defaultfontfeatures{Ligatures=TeX}
@@ -130,17 +133,16 @@
 \newmdenv[
         skipabove=4mm,
         skipbelow=1mm,
-        innertopmargin=2mm,
-        innerbottommargin=0mm,
+        innertopmargin=1mm,
+        innerbottommargin=1mm,
         innerleftmargin=0mm,
-        innerrightmargin=pt,
+        innerrightmargin=0pt,
         rightline=false,
         topline=false,
         bottomline=false,
         linewidth=1mm,
-        frametitlefont=\sffamily\bfseries,
-        backgroundcolor=TMbulletinBackground
-]{TMbulletinBase}
+        frametitlefont={\sffamily\bfseries},
+        backgroundcolor=TMbulletinBackground]{TMbulletinBase}
 \newmdenv[default, linewidth=0pt, backgroundcolor=TMbulletinBackground]{TMbulletinContent}
 
 % we then define three styles, one for each type
@@ -149,7 +151,8 @@
 \mdfdefinestyle{critical}{linecolor=TMcritical}
 
 % we then define some auxilliary commands
-\newcommand{\@TMbulletinTitleContent}[2]{
+\newcommand{\@TMbulletinTitleContent}[2]
+{
     \hspace*{2mm}\begin{minipage}{.75cm}
         \includegraphics[width=\linewidth]{#1}
     \end{minipage}\hspace*{1mm}\begin{minipage}{\textwidth-1.05cm}
@@ -160,8 +163,7 @@
 % and finally the main environment
 % takes type (warning/normal/critical) as first argument
 % takes bulletin title as second argument
-\newenvironment{TMbulletin}[2]
-{
+\newenvironment{TMbulletin}[2]{
     \begin{TMbulletinBase}[style=#1, frametitle=\@TMbulletinTitleContent{images/#1.png}{#2}]
     \vspace*{1mm}
     \begin{TMbulletinContent}
@@ -185,8 +187,8 @@
             innerleftmargin=0mm,
             innerbottommargin=0mm,
             innerrightmargin=10pt,
-            backgroundcolor=light-gray,
-            linecolor=Gray
+            backgroundcolor=TMcodeBackground,
+            linecolor=TMcodeFrame,
 }
 \everyrow{\tabucline[.4mm white]{}}
 \tabulinesep=^4mm_3mm
@@ -203,3 +205,22 @@
     \end{table}
 }
 
+% theorem styles
+\declaretheoremstyle[
+    postheadspace=\newline,
+    headfont=\sffamily\bfseries\large,
+    mdframed={
+            skipabove=4mm,
+            skipbelow=0mm,
+            rightline=false,
+            topline=false,
+            bottomline=false,
+            linewidth=1mm,
+            linecolor=TMtheorem,
+            backgroundcolor=TMcodeBackground,
+    }
+]{TMtheoremStyle}
+\declaretheorem[style=TMtheoremStyle, within=section]{theorem}
+\declaretheorem[style=TMtheoremStyle, sibling=theorem]{lemma}
+\declaretheorem[style=TMtheoremStyle, sibling=theorem]{corollary}
+\declaretheorem[style=TMtheoremStyle, sibling=theorem]{proposition}
