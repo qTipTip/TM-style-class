@@ -1,5 +1,5 @@
 \documentclass{TMarticle}
-
+\usepackage[]{lipsum} 
 \author{Ivar Stangeby}
 \title{The TMarticle document class}
 \begin{document}
@@ -15,16 +15,23 @@ void main(int argc) {
 \end{TMcode}
 
 \section{Tables and Figures}
-
+\begin{TMtable}{X X X X}
+    Hello & Test & 1 & 1 \\
+    Hello & Test & 1 & 1 \\
+    Hello & Test & 1 & 1 \\
+    Hello & Test & 1 & 1 \\
+    Hello & Test & 1 & 1 \\
+\end{TMtable}
 \section{Warnings and bulletins}
 
 \begin{TMbulletin}{warning}{Test Warning}
    Warning! 
 \end{TMbulletin}
-\begin{TMbulletin}{normal}{Test normal}
+\begin{TMbulletin}{normal}{Test Normal}
     Everything is ok!
 \end{TMbulletin}
-\begin{TMbulletin}{critical}{Test critical}
+
+\begin{TMbulletin}{critical}{Test Critical}
     Oops!
 \end{TMbulletin}
 

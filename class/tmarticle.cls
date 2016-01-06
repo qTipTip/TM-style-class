@@ -7,6 +7,10 @@
 \RequirePackage{mdframed}
 \RequirePackage{graphicx}
 \RequirePackage{calc}
+\RequirePackage{array}
+\RequirePackage{tabu}
+\RequirePackage{longtable}
+\RequirePackage{fontspec}
 
 % color definitions
 \definecolor{TMgreen}{RGB}{14, 191, 48}
@@ -22,6 +26,35 @@
 \definecolor{TMcritical}{RGB}{229, 0, 72}
 \definecolor{TMnormal}{RGB}{54, 160, 220}
 \definecolor{TMbulletinBackground}{RGB}{224, 224, 224}
+
+% font settings
+\defaultfontfeatures{Ligatures=TeX}
+\setmonofont{Source Code Pro Light}[BoldFont=Source Code Pro]
+\setmainfont{Lato Light}[
+    Numbers=OldStyle,
+    BoldFont=Lato Regular,
+    ItalicFont=Lato Light Italic,
+    BoldItalicFont=Lato Italic
+]
+\setsansfont{Lato Light}[
+    Numbers=OldStyle,
+    BoldFont=Lato Regular,
+    ItalicFont=Lato Light Italic,
+    BoldItalicFont=Lato Italic
+]
+\newfontfamily{\titlefont}{Lato Light}[
+    Numbers=OldStyle,
+    BoldFont=Lato Regular,
+    ItalicFont=Lato Light Italic,
+    BoldItalicFont=Lato Italic
+]
+
+% Font for chapter number
+\newfontfamily{\upperNumber}{Lato Light}[
+    BoldFont=Lato Regular,
+    ItalicFont=Lato Light Italic,
+    BoldItalicFont=Lato Italic
+]
 
 % we now start creating the TM-styled code listing environments
 % the lstlisting environment is wrapped in an MD-frame
@@ -79,7 +112,7 @@
     \mdframed
     \hspace*{3mm}
     \minipage{0.75cm}
-    \includegraphics[width=\linewidth]{images/code.png}
+    \includegraphics[width=\linewidth]{images/code2.png}
     \endminipage
     \hspace*{1mm}
     \minipage{\textwidth-1.05cm}
@@ -137,3 +170,37 @@
     \end{TMbulletinContent}
     \end{TMbulletinBase}
 }
+
+% we now define the mdtable styles
+\mdfdefinestyle{TMstyleTable}{
+            skipabove=4mm,
+            skipbelow=0mm,
+            %remove borders
+            rightline=false,
+            topline=false,
+            bottomline=false,
+            linewidth=1mm,
+            %margins
+            innertopmargin=2mm,
+            innerleftmargin=0mm,
+            innerbottommargin=0mm,
+            innerrightmargin=10pt,
+            backgroundcolor=light-gray,
+            linecolor=Gray
+}
+\everyrow{\tabucline[.4mm white]{}}
+\tabulinesep=^4mm_3mm
+\taburowcolors[2] 2{TMtableRowOne .. TMtableRowTwo}
+\newenvironment{TMtable}[1]
+{
+    \begin{table}[ht!]
+    \begin{tabu} to \textwidth{#1}
+        \rowfont{\bfseries\sffamily\leavevmode\color{white}}
+        \rowcolor{TMtableHead}
+}
+{
+    \end{tabu}
+    \end{table}
+    \end{mdframe}
+}
+
