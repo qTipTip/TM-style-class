@@ -153,7 +153,7 @@
 % we then define some auxilliary commands
 \newcommand{\@TMbulletinTitleContent}[2]
 {
-    \hspace*{2mm}\begin{minipage}{.75cm}
+    \hspace*{2mm}\begin{minipage}{0.75cm}
         \includegraphics[width=\linewidth]{#1}
     \end{minipage}\hspace*{1mm}\begin{minipage}{\textwidth-1.05cm}
             #2
@@ -183,27 +183,29 @@
             bottomline=false,
             linewidth=1mm,
             %margins
-            innertopmargin=2mm,
+            innertopmargin=0mm,
             innerleftmargin=0mm,
             innerbottommargin=0mm,
-            innerrightmargin=10pt,
+            innerrightmargin=0pt,
             backgroundcolor=TMcodeBackground,
             linecolor=TMcodeFrame,
 }
 \everyrow{\tabucline[.4mm white]{}}
 \tabulinesep=^4mm_3mm
 \taburowcolors[2] 2{TMtableRowOne .. TMtableRowTwo}
-\newenvironment{TMtable}[1]
+\newenvironment{TMtable}[2]
 {
-    \begin{table}[ht!]
+    \begin{table}[#2]
+    \begin{mdframed}[style=TMstyleTable]
     \begin{tabu} to \textwidth{#1}
         \rowfont{\bfseries\sffamily\leavevmode\color{white}}
         \rowcolor{TMtableHead}
 }
 {
     \end{tabu}
+    \end{mdframed}
     \end{table}
-}
+    }
 
 % theorem styles
 \declaretheoremstyle[
