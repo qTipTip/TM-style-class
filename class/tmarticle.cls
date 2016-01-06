@@ -90,3 +90,48 @@
 {
     \endmdframed
 }
+
+% We now want to create the bulletin-environments
+% we first define two new mdenvironments, one for the header and one for
+% the content
+\newmdenv[
+        skipabove=4mm,
+        skipbelow=1mm,
+        innertopmargin=2mm,
+        innerbottommargin=0mm,
+        innerleftmargin=0mm,
+        innerrightmargin=pt,
+        rightline=false,
+        topline=false,
+        bottomline=false,
+        linewidth=1mm,
+        frametitlefont=\sffamily\bfseries,
+        backgroundcolor=TMbulletinBackground
+]{TMbulletinBase}
+\newmdenv[default, linewidth=0pt, backgroundcolor=TMbulletinBackground]{TMbulletinContent}
+
+% we then define three styles, one for each type
+\mdfdefinestyle{normal}{linecolor=TMnormal}
+\mdfdefinestyle{warning}{linecolor=TMwarning}
+\mdfdefinestyle{critical}{linecolor=TMcritical}
+
+% we then define some auxilliary commands
+\newcommand{\@TMbulletinTitleContent}[2]{
+    \hspace*{2mm}\begin{minipage}{.75cm}
+        \includegraphics[width=\linewidth]{#1}
+    \end{minipage}\hspace*{1mm}\begin{minipage}{\textwidth-1.05cm}
+            #2
+    \end{minipage}
+}
+
+% and then the main environment
+\newenvironment{TMbulletin}[2]
+{
+    \begin{TMbulletinBase}[style=#1, frametitle=\@TMbulletinTitleContent{images/#1.png}{Title}]
+    \vspace*{1mm}
+    \begin{TMbulletinContent}
+}
+{
+    \end{TMbulletinContent}
+    \end{TMbulletinBase}
+}
