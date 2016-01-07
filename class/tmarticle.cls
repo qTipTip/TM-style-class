@@ -20,7 +20,7 @@
 \definecolor{TMred}{RGB}{230, 6, 85}
 \definecolor{TMcodeBackground}{RGB}{224, 224, 224}
 \definecolor{TMcodeFrame}{RGB}{109, 108, 109}
-\definecolor{TMtableHead}{RGB}{211, 47, 0}
+\definecolor{TMtableHead}{RGB}{230, 6, 85}
 \definecolor{TMtableRowTwo}{RGB}{230, 230, 230}
 \definecolor{TMtableRowOne}{RGB}{240, 240, 240}
 \definecolor{TMemphasis}{RGB}{165, 32, 23}
@@ -189,10 +189,10 @@
             innerbottommargin=0mm,
             innerrightmargin=0pt,
             backgroundcolor=TMcodeBackground,
-            linecolor=TMcodeFrame,
+            linecolor=TMtableHead,
 }
 \everyrow{\tabucline[.4mm white]{}}
-\tabulinesep=^3mm_3mm
+\tabulinesep=^3mm_2mm
 \taburowcolors[2] 2{TMtableRowOne .. TMtableRowTwo}
 \newenvironment{TMtable}[3]
 {
@@ -201,7 +201,7 @@
     \begin{mdframed}[style=TMstyleTable]
     \begin{tabu} to \textwidth{#1}
         \rowfont{\bfseries\sffamily\leavevmode\color{white}}
-        \rowcolor{TMtableHead}
+        \rowcolor{TMtableHead!}
 }
 {
     \end{tabu}
