@@ -1,5 +1,8 @@
 \documentclass{TMarticle}
 \usepackage[]{lipsum} 
+\usepackage[]{paralist} 
+\usepackage[]{amsmath} 
+\usepackage[]{amssymb} 
 \definecolor{TMcodeBackground}{RGB}{240, 240, 240}
 \definecolor{TMbulletinBackground}{RGB}{240, 240, 240}
 \author{Ivar Stangeby}
@@ -53,26 +56,42 @@ void main(int argc) {
 
 \section{Proclamations}
 
-\begin{theorem}[Euclid]
-   This is a test proclamation with a lot of mathematics like $x^2 = 7$ and $i^2 = -1$.
-   \[
-       f(x) = x \int_2^7 g(x) \, dx.
-   \]
+\begin{theorem}[Fredholm Alternative]
+    For any fixed $\mu \in \mathbb{C}$ the Fredholm alternative holds for the
+    second kind Fredholm integral equation
+    \begin{equation}
+        \notag
+        (I - \mu K) u = f.
+    \end{equation}
+    That is, either
+    \begin{inparaenum}[a)]
+    \item $\mu$ is not a characteristic value of $K$ and the equation has a
+        unique solution $u \in \mathcal{H}$ for any given $f \in \mathcal{H}$;
+        or \item $\mu$ is a characteristic value of $K$ and the corresponding
+        homogeneous equation has non-zero solutions, while the inhomogeneous
+        equation has (non-unique) solutions if and only if $f$ is orthogonal to
+        the subspace $\mathrm{Ker}(I - \bar{\mu}K^*)$. 
+    \end{inparaenum}
 \end{theorem}
 \begin{proof}
-   It is easy to show the above since it follows from already proven results.
+    Left as an exercise for the reader.
 \end{proof}
-\begin{lemma}[TestLemma]
-    Please ignore.
+\begin{lemma}[Volterra integral operator]
+    If $K$ is a Volterra integral operator on $\mathcal{H}$ then there exists a
+    constant $C > 0$ such that $\|K^n\|_{\mathcal{H}} \leq C^n / n!$, for any
+    integer $n \geq 1$.
 \end{lemma}
-\begin{proposition}[Euclid]
-   This is a test proclamation with a lot of mathematics like $x^2 = 7$ and $i^2 = -1$.
-   \[
-       f(x) = x \int_2^7 g(x) \, dx.
-   \]
-\end{proposition}
-\begin{corollary}[Euclid 2]
-    Please ignore.
-\end{corollary}
-\section{Colors}
+
+\section{Icons}
+\label{sec:icons}
+
+The icons are taken from the link given in the readme-file. Slight colorations
+done by me.\\
+
+    \includegraphics[width=0.17\linewidth]{images/code2.png}
+    \includegraphics[width=0.17\linewidth]{images/critical.png}
+    \includegraphics[width=0.17\linewidth]{images/warning.png}
+    \includegraphics[width=0.17\linewidth]{images/normal.png}
+    \includegraphics[width=0.17\linewidth]{images/stats.png}
+
 \end{document}
