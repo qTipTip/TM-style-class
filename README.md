@@ -1,4 +1,6 @@
 # TM-style-class
+
+[![Join the chat at https://gitter.im/qTipTip/TM-style-class](https://badges.gitter.im/qTipTip/TM-style-class.svg)](https://gitter.im/qTipTip/TM-style-class?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A modern LaTeX document class.
 
 This is essentially a copy of the LaTeX-styles defined in
